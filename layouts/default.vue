@@ -1,20 +1,25 @@
 <template>
-  <div class="">
-    <nuxt-link to="/about">
-      <h2>Hello World</h2>
-    </nuxt-link>
-    <nuxt-link to="/">
-      <h2>Home</h2>
-    </nuxt-link>
+  <div class="wrapper">
+    <sidebar />
     <div class="container">
       <nuxt />
     </div>
   </div>
 </template>
 
+<script>
+import Sidebar from '@/components/Sidebar'
+
+export default {
+  components: {
+    Sidebar
+  }
+}
+</script>
+
 <style scoped>
   .container {
-    min-width: 1000px;
+    max-width: 1000px;
     margin: 0 auto;
   }
 </style>
