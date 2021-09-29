@@ -1,6 +1,7 @@
 <template>
   <div class="wrapper">
     <sidebar />
+    <navbar />
     <div class="container">
       <nuxt />
     </div>
@@ -9,10 +10,12 @@
 
 <script>
 import Sidebar from '@/components/Sidebar'
+import Navbar from '@/components/Navbar'
 
 export default {
   components: {
-    Sidebar
+    Sidebar,
+    Navbar
   }
 }
 </script>

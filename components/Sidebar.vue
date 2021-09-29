@@ -54,7 +54,9 @@ export default {
 
 <style lang="scss" scoped>
   .aside {
+      background-color: $main-bg;
       position: fixed;
+      z-index: 10;
       bottom: 0;
       left: 0;
       overflow: hidden;
@@ -65,7 +67,7 @@ export default {
       align-items: center;
       justify-content: space-around;
       flex-direction: row;
-      .aside__img {
+      &__img {
         width: 22px;
         height: 22px;
         &:hover {
@@ -85,7 +87,7 @@ export default {
       align-items: center;
       justify-content: center;
       row-gap: 80px;
-      .aside__img {
+      &__img {
         width: 32px;
         height: 32px;
       }

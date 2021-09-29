@@ -12,6 +12,19 @@
     line-height: 1.15; /* 1 */
     -webkit-text-size-adjust: 100%; /* 2 */
   }
+
+  html {
+    overflow: scroll;
+    overflow-x: hidden;
+     }
+    ::-webkit-scrollbar {
+    width: 0px;  /* remove scrollbar space */
+    background: transparent;  /* optional: just make scrollbar invisible */
+      }
+    /* optional: show position indicator in red */
+    ::-webkit-scrollbar-thumb {
+    background: #FF0000;
+     }
   
   /* Sections
      ========================================================================== */
@@ -128,6 +141,17 @@
     line-height: 0;
     position: relative;
     vertical-align: baseline;
+  }
+
+  button {
+    padding: 0;
+    border: none;
+    font: inherit;
+    color: inherit;
+    background-color: transparent;
+    /* отображаем курсор в виде руки при наведении; некоторые
+    считают, что необходимо оставлять стрелочный вид для кнопок */
+    cursor: pointer;
   }
   
   sub {
