@@ -43,11 +43,11 @@
           </nuxt-link>
         </div>
         <div class="header__exit">
-          <btn
+          <custom-btn
             :way="'/'"
             :title="'Login'"
             :bg="'#1A222D'"/>
-          <btn
+          <custom-btn
             :way="'/'"
             :title="'Sing up'"
             :bg="'linear-gradient(180deg, #2788F6 0%, #0960E0 100%)'"/>
@@ -58,11 +58,11 @@
 </template>
 
 <script>
-import Btn from '@/components/basic/Btn'
+import CustomBtn from '@/components/basic/CustomBtn'
 
 export default {
   components: {
-    Btn
+    CustomBtn
   },
   data () {
     return {

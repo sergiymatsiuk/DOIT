@@ -1,0 +1,72 @@
+.input {
+  display: flex;
+  flex-direction: column;
+  width: 240px;
+  &__label {
+    font-family: 'Rubik';
+    font-size: 14px;
+    line-height: 14px;
+    font-weight: 400;
+    margin-bottom: 6px;
+  }
+  &__box {
+      padding: 12px 16px;
+    background-color: $main-bg;
+    border: 1px solid #16263D;
+    border-radius: 2px;
+    color: #627ca3;
+    font-size: 16px;
+    font-weight: 400;
+    font-family: 'Rubik';
+    &::placeholder {
+      color: #627ca3;
+    }
+    &:hover {
+      background: #121F33;
+      border: 1px solid #627CA3;
+    }
+    &:focus {
+      background: #16263D;
+      border: 1px solid #185EC7;
+      color: #E6E6E6;
+    }
+    &:disabled {
+      background: #121F33;
+      color: #98A4B5;
+      border: none;
+    }
+  }
+  &__message {
+    display: none;
+  }
+}
+
+.input-invalid {
+  .input__box {
+    border: 1px solid #B83333;
+    background-color: $main-bg;
+  }
+  .input__message {
+    display: flex;
+    color: #B83333 ;
+    line-height: 12px;
+    font-size: 12px;
+    font-family: 'Rubik';
+    margin-top: 4px;
+  }
+}
+
+.input-valid {
+  .input__box {
+    border: 1px solid #4CB725;
+    background-color: $main-bg;
+  }
+  .input__message {
+    display: flex;
+    color: #4CB725;
+    line-height: 12px;
+    font-size: 12px;
+    font-family: 'Rubik';
+    margin-top: 4px;
+  }
+}
