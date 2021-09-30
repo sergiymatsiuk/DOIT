@@ -1,24 +1,33 @@
 <template>
   <div class="">
     <h2>Let's START!</h2>
+    <br>
+    <custom-select
+      :title="'Country'"/>
+    <br>
     <custom-input
       :title="'Basic'"/>
-      <custom-input
+    <br>
+    <custom-input
       :fail="true"
       :message="'error'"
       :title="'Error'"/>
-      <custom-input
+    <br>
+    <custom-input
       :success="true"
       :message="'success'"
       :title="'Success'"/>
+    <br>
   </div>
 </template>
 
 <script>
 import CustomInput from '@/components/basic/CustomInput'
+import CustomSelect from '@/components/basic/CustomSelect'
 export default {
   components: {
-    CustomInput
+    CustomInput,
+    CustomSelect
   }
 }
 </script>

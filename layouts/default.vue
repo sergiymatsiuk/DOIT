@@ -24,5 +24,6 @@ export default {
   .container {
     max-width: 1000px;
     margin: 0 auto;
+    margin-bottom: 60px;
   }
 </style>
