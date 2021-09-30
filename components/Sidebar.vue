@@ -54,28 +54,36 @@ export default {
 
 <style lang="scss" scoped>
   .aside {
-      background-color: $main-bg;
-      position: fixed;
-      z-index: 10;
-      bottom: 0;
-      left: 0;
-      overflow: hidden;
-      width: 100%;
-      height: 54px;
-      border-top: 1px solid #20252b;
-      display: flex;
-      align-items: center;
-      justify-content: space-around;
-      flex-direction: row;
-      &__img {
-        width: 22px;
-        height: 22px;
-        &:hover {
-          filter: brightness(0) invert(1);
-        }
+    background-color: $main-bg;
+    position: fixed;
+    z-index: 2;
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+    width: 100%;
+    height: 54px;
+    border-top: 1px solid #20252b;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: row;
+    &__img {
+      width: 22px;
+      height: 22px;
+      &:hover {
+        filter: brightness(0) invert(1);
       }
     }
-  @media (min-width: 767px) {
+  }
+  @media (min-width: 1000px) {
+    .aside {
+      &__img {
+        width: 32px;
+        height: 32px;
+      }
+    }
+  }
+  @media (min-width: 1300px) {
     .aside {
       position: fixed;
       left: 0;
@@ -87,10 +95,6 @@ export default {
       align-items: center;
       justify-content: center;
       row-gap: 80px;
-      &__img {
-        width: 32px;
-        height: 32px;
-      }
     }
   }
 </style>

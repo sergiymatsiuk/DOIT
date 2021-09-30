@@ -159,14 +159,17 @@ export default {
   }
 }
 
-@media (min-width: 767px) {
+@media (min-width: 1000px) {
   .header {
+    display: flex;
+    justify-content: center;
     &__burger {
       display: none;
     }
     &__container {
-      margin: 32px auto;
-      justify-content: start;
+      width: 90%;
+      margin: 32px 0;
+      justify-content: space-between;
     }
     &__logo {
       margin-right: 56px;
@@ -202,6 +205,14 @@ export default {
       text-decoration-line: none;
       font-family: 'Rubik';
       font-weight: 700;
+    }
+  }
+}
+
+@media (min-width: 1300px) {
+  .header {
+    &__container {
+      width: 80%;
     }
   }
 }
