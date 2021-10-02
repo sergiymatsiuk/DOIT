@@ -56,7 +56,7 @@ export default {
   .aside {
     background-color: $main-bg;
     position: fixed;
-    z-index: 2;
+    z-index: 3;
     bottom: 0;
     left: 0;
     overflow: hidden;

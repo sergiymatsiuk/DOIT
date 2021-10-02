@@ -38,7 +38,6 @@ export default {
   @media (min-width: 767px) {
     .btn {
       padding: 16px 30px;
-      width: auto;
     }
   }
 </style>

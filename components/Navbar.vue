@@ -48,6 +48,7 @@
             :title="'Login'"
             :bg="'#1A222D'"/>
           <custom-btn
+            class="header__sing"
             :way="'/'"
             :title="'Sing up'"
             :bg="'linear-gradient(180deg, #2788F6 0%, #0960E0 100%)'"/>
@@ -82,6 +83,8 @@ export default {
   }
   &__info {
       display: none;
+      background-color: $main-bg;
+      z-index: 2;
     }
   &__info_active {
     position: absolute;

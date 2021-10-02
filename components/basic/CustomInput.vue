@@ -8,7 +8,7 @@
     <input
       type="text"
       class="input__box"
-      placeholder="google@gmail.com">
+      :placeholder="placeholder">
     <span
       v-if="message"
       class="input__message">{{message}}</span>
@@ -18,6 +18,10 @@
  <script>
  export default {
    props: {
+     placeholder: {
+       type: String,
+       default: 'google@gmail.com'
+     },
      title: {
        type: String,
        required: true
