@@ -1,63 +1,54 @@
 <template>
-  <div class="login">
+  <div class="register">
     <back-arrow/>
     <div
-      class="login__logo">
+      class="register__logo">
       <img src="@/assets/logo/DOIT.png" alt="" srcset="">
     </div>
     <p
-      class="login__title">Login</p>
+      class="register__title">Sign up 1/2</p>
     <form
       action=""
-      class="login__form">
+      class="register__form">
       <custom-input
-        class="login__mail"
-        :title="'Username or Email'"/>
+        class="register__mail"
+        :title="'Email'"/>
       <custom-input
-        class="login__password"
+        class="register__password"
         :placeholder="'password'"
         :title="'Password'"/>
-      <div class="login__btn">
-        <custom-btn
-        class=""
-        :way="'/'"
-        :title="'Login'"
-        :bg="'linear-gradient(180deg, #2788F6 0%, #0960E0 100%)'"/>
-      </div>
+      <button
+        class="register__btn"
+        @click.prevent="nextStep"
+        >Next step</button>
     </form>
-    <p class="login__with">or login with</p>
-    <div class="login__box">
+    <p class="register__with">or login with</p>
+    <div class="register__box">
       <nuxt-link
         to="/"
-        class="login__boxItem">
+        class="register__boxItem">
         <img src="@/assets/logo/login/fb.png" alt="" srcset="">
       </nuxt-link>
       <nuxt-link
         to="/"
-        class="login__boxItem">
+        class="register__boxItem">
         <img src="@/assets/logo/login/other.png" alt="" srcset="">
       </nuxt-link>
       <nuxt-link
         to="/"
-        class="login__boxItem">
+        class="register__boxItem">
         <img src="@/assets/logo/login/google.png" alt="" srcset="">
       </nuxt-link>
       <nuxt-link
         to="/"
-        class="login__boxItem">
+        class="register__boxItem">
         <img src="@/assets/logo/login/steam.png" alt="" srcset="">
       </nuxt-link>
     </div>
     <nuxt-link
-      to="/forgot-password"
-      class="login__forgot"
-      >Forgot password?</nuxt-link>
-      <p
-      class="login__sing">Don't have an account?
-        <nuxt-link
-          to="/register"
-          class="login__forgot">Sing up!</nuxt-link>
-      </p>
+      to="/login"
+      class="register__login"
+      >Already have an account?</nuxt-link>
   </div>
 </template>
 
@@ -72,12 +63,17 @@ export default {
     CustomBtn,
     BackArrow
   },
-  layout: 'empty'
+  layout: 'empty',
+  methods: {
+    nextStep () {
+      this.$emit('next-step')
+    }
+  }
 }
 </script>
 
 <style lang="scss" scoped>
-  .login {
+  .register {
     width: 240px;
     margin: 64px auto;
     display: flex;
@@ -111,7 +107,16 @@ export default {
       margin-bottom: 22px;
     }
     &__btn {
-      display: flex;
+      width: 100%;
+      color: #f5f5f5;
+      font-size: 16px;
+      font-family: 'Rubik';
+      font-weight: 700;
+      background: linear-gradient(180deg, #2788F6 0%, #0960E0 100%);
+      padding: 16px;
+      border-radius: 2px;
+      text-decoration: none;
+      text-align: center;
     }
     &__box {
       margin-bottom: 30px;
@@ -138,17 +143,13 @@ export default {
       color: #627CA3;
       text-align: center;
     }
-    &__forgot {
+    &__login {
       text-align: center;
       color: #0A68F5;
       text-decoration: none;
       &:hover {
         text-decoration: underline;
       }
-    }
-    &__sing {
-      margin-top: 12px;
-      color: #627CA3;
     }
   }
 </style>

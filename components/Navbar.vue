@@ -49,7 +49,7 @@
             :bg="'#1A222D'"/>
           <custom-btn
             class="header__sing"
-            :way="'/'"
+            :way="'/register'"
             :title="'Sing up'"
             :bg="'linear-gradient(180deg, #2788F6 0%, #0960E0 100%)'"/>
         </div>
