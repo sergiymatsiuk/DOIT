@@ -162,7 +162,7 @@ export default {
   }
 }
 
-@media (min-width: 1000px) {
+@media (min-width: 1050px) {
   .header {
     display: flex;
     justify-content: center;
@@ -188,7 +188,7 @@ export default {
       width: 100%;
     }
     &__exit {
-      width: 234px;
+      width: 245px;
       flex-direction: row;
       justify-content: end;
       gap: 8px;
