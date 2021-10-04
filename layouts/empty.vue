@@ -9,7 +9,7 @@
     background-color: $empty-bg;
     position: absolute;
     top: 0;
-    height: 100vh;
-    width: 100%;
+    min-height: 100%;
+    min-width: 100%;
   }
 </style>

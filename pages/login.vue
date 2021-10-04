@@ -16,12 +16,47 @@
         class="login__password"
         :placeholder="'password'"
         :title="'Password'"/>
-      <custom-btn
-        class="login__btn"
+      <div class="login__btn">
+        <custom-btn
+        class=""
         :way="'/'"
         :title="'Login'"
         :bg="'linear-gradient(180deg, #2788F6 0%, #0960E0 100%)'"/>
+      </div>
     </form>
+    <p class="login__with">or login with</p>
+    <div class="login__box">
+      <nuxt-link
+        to="/"
+        class="login__boxItem">
+        <img src="@/assets/logo/login/fb.png" alt="" srcset="">
+      </nuxt-link>
+      <nuxt-link
+        to="/"
+        class="login__boxItem">
+        <img src="@/assets/logo/login/other.png" alt="" srcset="">
+      </nuxt-link>
+      <nuxt-link
+        to="/"
+        class="login__boxItem">
+        <img src="@/assets/logo/login/google.png" alt="" srcset="">
+      </nuxt-link>
+      <nuxt-link
+        to="/"
+        class="login__boxItem">
+        <img src="@/assets/logo/login/steam.png" alt="" srcset="">
+      </nuxt-link>
+    </div>
+    <nuxt-link
+      to="/"
+      class="login__forgot"
+      >Forgot password?</nuxt-link>
+      <p
+      class="login__sing">Don't have an account?
+        <nuxt-link
+          to="/"
+          class="login__forgot">Sing up!</nuxt-link>
+      </p>
   </div>
 </template>
 
@@ -45,6 +80,7 @@ export default {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    font-family: 'Rubik';
     &__logo {
       display: flex;
       justify-content: center;
@@ -56,7 +92,6 @@ export default {
     }
     &__title {
       margin: 0 auto;
-      font-family: 'Rubik';
       font-weight: 700;
       font-style: normal;
       color: #E6E6E6;
@@ -73,7 +108,44 @@ export default {
       margin-bottom: 22px;
     }
     &__btn {
-      width: 100%;
+      display: flex;
+    }
+    &__box {
+      margin-bottom: 30px;
+      margin-top: 16px;
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+    }
+    &__boxItem {
+      width: 48px;
+      height: 48px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 1px solid #16263D;
+      box-sizing: border-box;
+      border-radius: 2px;
+      &:hover {
+        border: 1px solid #627CA3;
+      }
+    }
+    &__with {
+      margin: 0;
+      color: #627CA3;
+      text-align: center;
+    }
+    &__forgot {
+      text-align: center;
+      color: #0A68F5;
+      text-decoration: none;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+    &__sing {
+      margin-top: 12px;
+      color: #627CA3;
     }
   }
 </style>

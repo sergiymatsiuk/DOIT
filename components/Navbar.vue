@@ -44,7 +44,7 @@
         </div>
         <div class="header__exit">
           <custom-btn
-            :way="'/'"
+            :way="'/login'"
             :title="'Login'"
             :bg="'#1A222D'"/>
           <custom-btn
@@ -119,9 +119,12 @@ export default {
     text-decoration-line: none;
     font-family: 'Rubik';
     font-weight: 700;
+    &:hover {
+      text-decoration: underline;
+    }
   }
   &__exit {
-    width: 95%;
+    width: 90%;
     margin: 0 auto;
     display: flex;
     gap: 12px;

@@ -1,9 +1,10 @@
 <template>
-  <button
+  <nuxt-link
+    :to="way"
     class="btn"
     :style="{background: bg}">
     {{title}}
-  </button>
+  </nuxt-link>
 </template>
 
 <script>
@@ -34,6 +35,8 @@ export default {
     font-weight: 700;
     padding: 16px;
     border-radius: 2px;
+    text-decoration: none;
+    text-align: center;
   }
   @media (min-width: 767px) {
     .btn {
