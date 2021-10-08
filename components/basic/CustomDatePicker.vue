@@ -1,0 +1,83 @@
+<template>
+  <div>
+    <client-only>
+      <v-date-picker
+        :value='value'
+        is-dark
+        color="dark"
+        show-caps
+        locale="en"
+        v-bind="$attrs"
+        :first-day-of-week="1"
+        :masks="{ title: 'YYYY MMMM', input: 'DD-MM-YYYY' }"
+        v-on="$listeners"
+      >
+        <template #default="{ inputValue, togglePopover }">
+          <div class="datepicker" @click="togglePopover()">
+            <input
+              :value="inputValue"
+              class="datepicker__input" 
+              readonly
+              placeholder="dd-mm-yyyy"
+            />
+            
+          </div>
+        </template>
+      </v-date-picker>
+    </client-only>
+  </div>
+</template>
+
+<script>
+export default {
+  inheritAttrs: false,
+  props: {
+    value: {
+      default: null
+    }
+  }
+}
+</script>
+
+<style lang="scss">
+.datepicker {
+  width: 240px;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  font-family: 'Rubik';
+  font-weight: 400;
+  height: 40px;
+  & .datepicker__input {
+    width: 100%;
+    padding: 0.56rem 1rem;
+    border: 1px solid #16263d;
+    border-radius: 2px;
+    color: #627ca3;
+    background: rgba($color: #000000, $alpha: 0);
+    &::placeholder {
+      color: #627ca3;
+    }
+    &:active {
+      color: #e6e6e6;
+      background: #16263d;
+      border: 1px solid #185ec7;
+      border-radius: 2px;
+    }
+    &:disabled {
+      color: #98a4b5;
+      background: #121f33;
+      border-radius: 2px;
+    }
+    &:focus-visible {
+      outline: none;
+    }
+    &:focus {
+      color: #627ca3;
+      background: #121f33;
+      border: 1px solid #627ca3;
+      border-radius: 2px;
+    }
+  }
+}
+</style>

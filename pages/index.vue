@@ -18,16 +18,19 @@
       :message="'success'"
       :title="'Success'"/>
     <br>
+    <custom-date-picker />
   </div>
 </template>
 
 <script>
 import CustomInput from '@/components/basic/CustomInput'
 import CustomSelect from '@/components/basic/CustomSelect'
+import CustomDatePicker from '@/components/basic/CustomDatePicker'
 export default {
   components: {
     CustomInput,
-    CustomSelect
+    CustomSelect,
+    CustomDatePicker
   }
 }
 </script>
