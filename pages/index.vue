@@ -18,7 +18,12 @@
       :message="'success'"
       :title="'Success'"/>
     <br>
-    <custom-date-picker />
+    <custom-date-picker
+      :title="'Date'"
+      :value="null"/>
+    <br>
+    <custom-check-box>
+    </custom-check-box>
   </div>
 </template>
 
@@ -26,11 +31,14 @@
 import CustomInput from '@/components/basic/CustomInput'
 import CustomSelect from '@/components/basic/CustomSelect'
 import CustomDatePicker from '@/components/basic/CustomDatePicker'
+import CustomCheckBox from '@/components/basic/CustomCheckBox'
+
 export default {
   components: {
     CustomInput,
     CustomSelect,
-    CustomDatePicker
+    CustomDatePicker,
+    CustomCheckBox
   }
 }
 </script>

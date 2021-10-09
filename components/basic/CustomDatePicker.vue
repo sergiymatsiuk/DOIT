@@ -1,8 +1,8 @@
 <template>
   <div>
     <client-only>
+      <p class="title">{{title}}</p>
       <v-date-picker
-        :value='value'
         is-dark
         color="dark"
         show-caps
@@ -20,7 +20,7 @@
               readonly
               placeholder="dd-mm-yyyy"
             />
-            
+            <img src="@/assets/logo/calendar.svg" class="datepicker__logo" alt="" srcset="">
           </div>
         </template>
       </v-date-picker>
@@ -32,14 +32,23 @@
 export default {
   inheritAttrs: false,
   props: {
-    value: {
-      default: null
+    title: {
+      type: String,
+      default: ''
     }
   }
 }
 </script>
 
 <style lang="scss">
+.title {
+  font-family: 'Rubik';
+  font-size: 14px;
+  line-height: 14px;
+  font-weight: 400;
+  margin-bottom: 6px;
+  width: 240px;
+}
 .datepicker {
   width: 240px;
   display: flex;
@@ -48,7 +57,7 @@ export default {
   font-family: 'Rubik';
   font-weight: 400;
   height: 40px;
-  & .datepicker__input {
+  &__input {
     width: 100%;
     padding: 0.56rem 1rem;
     border: 1px solid #16263d;
@@ -69,6 +78,10 @@ export default {
       background: #121f33;
       border-radius: 2px;
     }
+    &:hover {
+    background: #121F33;
+    border: 1px solid #627CA3;
+    }
     &:focus-visible {
       outline: none;
     }
@@ -78,6 +91,11 @@ export default {
       border: 1px solid #627ca3;
       border-radius: 2px;
     }
+  }
+  &__logo {
+    position: absolute;
+    top: 8px;
+    right: 15px;
   }
 }
 </style>
