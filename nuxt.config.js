@@ -31,7 +31,8 @@ export default {
       src: '~/plugins/v-calednar.js',
       mode: 'client'
     },
-    '~/plugins/v-select.js'
+    '~/plugins/v-select.js',
+    '~/plugins/vuelidate.js'
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components

@@ -11,6 +11,7 @@
         :first-day-of-week="1"
         :masks="{ title: 'YYYY MMMM', input: 'DD-MM-YYYY' }"
         v-on="$listeners"
+        v-model="date"
       >
         <template #default="{ inputValue, togglePopover }">
           <div class="datepicker" @click="togglePopover()">
@@ -35,6 +36,16 @@ export default {
     title: {
       type: String,
       default: ''
+    }
+  },
+  data () {
+    return {
+      date: null
+    }
+  },
+  watch: {
+    date () {
+      this.$emit('change-date', this.date)
     }
   }
 }

@@ -6,11 +6,12 @@
       class="input__label"
       >{{title}}</label>
     <input
-      type="text"
       class="input__box"
-      :placeholder="placeholder">
+      :type="type"
+      :placeholder="placeholder"
+      :value="value"
+      @input="$emit('input', $event.target.value)">
     <span
-      v-if="message"
       class="input__message">{{message}}</span>
   </div>
 </template>
@@ -21,6 +22,14 @@
      placeholder: {
        type: String,
        default: 'google@gmail.com'
+     },
+     type: {
+       type: String,
+       default: 'text'
+     },
+     value: {
+       type: String,
+       default: null
      },
      title: {
        type: String,

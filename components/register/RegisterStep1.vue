@@ -8,15 +8,23 @@
     <p
       class="register__title">Sign up 1/2</p>
     <form
-      action=""
       class="register__form">
       <custom-input
         class="register__mail"
-        :title="'Email'"/>
+        :title="'Email'"
+        :fail="$v.email.$dirty && $v.email.$error"
+        :success="$v.email.$dirty && !$v.email.$error"
+        v-model.trim="$v.email.$model"
+        @input="changeEmail"/>
       <custom-input
         class="register__password"
+        :type="'password'"
         :placeholder="'password'"
-        :title="'Password'"/>
+        :title="'Password'"
+        :fail="$v.password.$dirty && $v.password.$error"
+        :success="$v.password.$dirty && !$v.password.$error"
+        v-model.trim="$v.password.$model"
+        @input="changePassword"/>
       <button
         class="register__btn"
         @click.prevent="nextStep"
@@ -56,17 +64,45 @@
 import CustomInput from '@/components/basic/CustomInput'
 import CustomBtn from '@/components/basic/CustomBtn'
 import BackArrow from '@/components/basic/BackArrow'
+import { required, minLength, email } from 'vuelidate/lib/validators'
 
 export default {
+  name: 'RegisterStep1',
   components: {
     CustomInput,
     CustomBtn,
     BackArrow
   },
+  data () {
+    return {
+      email: '',
+      password: ''
+    }
+  },
+  validations: {
+    email: {
+      required,
+      email
+    },
+    password: {
+      required,
+      minLength: minLength(6)
+    }
+  },
   layout: 'empty',
   methods: {
+    changeEmail (email) {
+      this.email = email
+    },
+    changePassword (password) {
+      this.password = password
+    },
     nextStep () {
-      this.$emit('next-step')
+      if (!this.email || this.$v.email.$error || !this.password || this.$v.password.$error) {
+        alert("Add EMAIL or PASSWORD")
+      } else {
+        this.$emit('next-step', this.email, this.password)
+      }
     }
   }
 }

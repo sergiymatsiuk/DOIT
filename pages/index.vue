@@ -3,7 +3,8 @@
     <h2>Let's START!</h2>
     <br>
     <custom-select
-      :title="'Country'"/>
+      :title="'Country'"
+      :options="['ukraine', 'usa', 'poland', 'italy']"/>
     <br>
     <custom-input
       :title="'Basic'"/>

@@ -8,7 +8,7 @@
     <p
       class="login__title">Login</p>
     <form
-      action=""
+      @submit.prevent="exit"
       class="login__form">
       <custom-input
         class="login__mail"
@@ -17,13 +17,12 @@
         class="login__password"
         :placeholder="'password'"
         :title="'Password'"/>
-      <div class="login__btn">
+      <button class="login__btn" type="submit" @click.prevent="exit">
         <custom-btn
-        class=""
-        :way="'/'"
+        :way="'/login'"
         :title="'Login'"
         :bg="'linear-gradient(180deg, #2788F6 0%, #0960E0 100%)'"/>
-      </div>
+      </button>
     </form>
     <p class="login__with">or login with</p>
     <div class="login__box">
@@ -72,7 +71,15 @@ export default {
     CustomBtn,
     BackArrow
   },
-  layout: 'empty'
+  layout: 'empty',
+  data () {
+    return {
+      email: '',
+      password: ''
+    }
+  },
+  methods: {
+  }
 }
 </script>
 
@@ -112,6 +119,7 @@ export default {
     }
     &__btn {
       display: flex;
+      width: 100%;
     }
     &__box {
       margin-bottom: 30px;

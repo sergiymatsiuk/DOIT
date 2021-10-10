@@ -1,5 +1,7 @@
 <template>
-  <div class="select">
+  <div
+    class="select"
+    :class="{ 'select-valid' : success }">
     <label
       class="select__label"
       >{{title}}</label>
@@ -7,7 +9,7 @@
       v-model="select"
       :disabled="false" 
       class="select__custom"
-      :options="['Components', 'CSS / Variables', 'Slots']"
+      :options="options"
     />
   </div>
 </template>
@@ -18,11 +20,24 @@ export default {
     title: {
       type: String,
       required: true
-    }
+    },
+    options: {
+      type: Array,
+      required: true
+    },
+    success: {
+      type: Boolean,
+      default: true
+    },
   },
   data () {
     return {
       select: ''
+    }
+  },
+  watch: {
+    select () {
+      this.$emit('change-select', this.select)
     }
   }
 }
@@ -65,6 +80,10 @@ export default {
       border: 1px solid #185EC7;
     }
 
+    .vs__dropdown-menu {
+      max-height: 250px;
+    }
+
     .vs__dropdown-toggle {
       border: 1px solid #16263D;
     }
@@ -83,6 +102,13 @@ export default {
       font-family: 'Rubik';
       font-size: 16px;
       margin-top: 2px;
+    }
+  }
+}
+.select-valid {
+  .select__custom {
+    .vs__dropdown-toggle {
+      border: 1px solid #4CB725;
     }
   }
 }
