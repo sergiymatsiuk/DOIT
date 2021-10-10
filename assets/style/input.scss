@@ -89,7 +89,6 @@
     margin-top: 4px;
   }
   .input__message::before {
-    z-index: 10;
     display: block;
     width: 22px;
     height: 1px;
@@ -101,7 +100,6 @@
     transform: rotate(-45deg);
   }
   .input__message::after {
-    z-index: 10;
     display: block;
     width: 10px;
     height: 1px;

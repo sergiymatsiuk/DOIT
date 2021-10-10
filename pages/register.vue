@@ -7,7 +7,8 @@
       v-else
       @select-country="country"
       @add-username="username"
-      @add-date="date"/>
+      @add-date="date"
+      @create-user="createUser"/>
   </div>
 </template>
 
@@ -39,16 +40,16 @@ export default {
       this.user.password = password;
       this.next = true
     },
-    country (name) {
-      this.user.country = name
-      console.log(this.user)
+    country (country) {
+      this.user.country = country
     },
     username (name) {
       this.user.username = name
-      console.log(this.user)
     },
     date (date) {
       this.user.date = date
+    },
+    createUser () {
       console.log(this.user)
     }
   }

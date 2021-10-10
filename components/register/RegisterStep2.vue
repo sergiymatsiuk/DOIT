@@ -21,22 +21,22 @@
         class="register__country"
         :title="'Country'"
         :options="countriesList"
-        :success="country"
-        v-model="$v.country.$model"
+        :success="isCountry"
         @change-select="selectCountry"/>
       <custom-date-picker
         class="register__date"
         :title="'Date'"
         :value="null"
+        :success="isDate"
         @change-date="addDate"/>
       <custom-check-box
         @change="changeAgree">
         <p class="agreeText">I’m have at least 13 years of age and agree to the <span>terms of service</span></p>
       </custom-check-box>
       <button
-        :disabled="!agree"
+        :disabled="allInput"
         class="register__btn"
-        @click.prevent="show"
+        @click.prevent="createUser"
         >Create an account</button>
     </form>
   </div>
@@ -65,21 +65,18 @@ export default {
       agree: false,
       username: '',
       date: '',
-      country: ''
+      country: null
     }
   },
   validations : {
     username: {
       required,
       minLength: minLength(4)
-    },
-    country: {
-      required
     }
   },
   methods: {
-    show () {
-      console.log('Hello World')
+    createUser () {
+      this.$emit('create-user')
     },
     selectCountry (country) {
       this.country = country
@@ -102,6 +99,17 @@ export default {
       return countries.map(el => {
         return el.name
       })
+    },
+    isCountry () {
+      return this.country ? true : false
+    },
+    isDate () {
+      return this.date ? true : false
+    },
+    allInput () {
+      return this.isCountry && this.isDate && this.$v.username.$dirty && !this.$v.username.$error && this.agree 
+        ? false
+        : true
     }
   }
 }

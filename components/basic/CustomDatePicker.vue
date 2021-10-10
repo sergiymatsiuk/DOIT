@@ -14,7 +14,10 @@
         v-model="date"
       >
         <template #default="{ inputValue, togglePopover }">
-          <div class="datepicker" @click="togglePopover()">
+          <div
+            class="datepicker"
+            :class="{ 'datepicker-valid':success }"
+            @click="togglePopover()">
             <input
               :value="inputValue"
               class="datepicker__input" 
@@ -36,7 +39,11 @@ export default {
     title: {
       type: String,
       default: ''
-    }
+    },
+    success: {
+      type: Boolean,
+      default: false
+    },
   },
   data () {
     return {
@@ -107,6 +114,11 @@ export default {
     position: absolute;
     top: 8px;
     right: 15px;
+  }
+}
+.datepicker-valid {
+  .datepicker__input {
+    border: 1px solid #4CB725;
   }
 }
 </style>
