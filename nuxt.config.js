@@ -2,6 +2,7 @@ const pkg = require('./package')
 
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
+  ssr: true,
   head: {
     title: 'DOIT',
     htmlAttrs: {
@@ -44,16 +45,36 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
-    '@nuxtjs/style-resources'
+    '@nuxtjs/style-resources',
+    '@nuxtjs/firebase',
+    '@nuxtjs/pwa',
+    '@nuxtjs/axios'
   ],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
   },
 
+  firebase: {
+    config : {
+      apiKey: "AIzaSyCI7KDDg8xKHA7a3bRmZIJxyht3CcfuAyA",
+      authDomain: "doit-abd08.firebaseapp.com",
+      projectId: "doit-abd08",
+      storageBucket: "doit-abd08.appspot.com",
+      messagingSenderId: "688462632224",
+      appId: "1:688462632224:web:ffc13200205d5493d37345",
+      measurementId: "G-JY9TF1K9T7"
+    },
+    services : {
+      auth: true,
+      database: true,
+      storage: true
+    }
+  },
+
   styleResources: {
     scss: [
-        'assets/style/global.scss'
+      'assets/style/global.scss'
     ]
-}
+  }
 }
