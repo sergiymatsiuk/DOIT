@@ -23,7 +23,7 @@
           </nuxt-link>
           <nuxt-link
             class="header__item"
-            to="/">
+            to="/news">
             News
           </nuxt-link>
           <nuxt-link
