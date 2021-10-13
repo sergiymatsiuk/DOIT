@@ -21,8 +21,8 @@ export default {
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
-    '~/assets/style/global.scss',
     '~/assets/style/normalize.css',
+    '~/assets/style/global.scss',
     '~/assets/style/input.scss'
   ],
 
