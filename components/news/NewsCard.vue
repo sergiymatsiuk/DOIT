@@ -27,10 +27,12 @@ export default {
     display: flex;
     flex-direction: column;
     width: 100%;
+    cursor: pointer;
     &__img {
       width: 100%;
       height: 160px;
       object-fit: cover;
+      object-position: 50% 20%;
     }
     &__info {
       display: flex;

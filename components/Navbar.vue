@@ -18,7 +18,7 @@
         <div class="header__list">
           <nuxt-link
             class="header__item"
-            to="/">
+            to="/adw">
             Play
           </nuxt-link>
           <nuxt-link
@@ -28,17 +28,17 @@
           </nuxt-link>
           <nuxt-link
             class="header__item"
-            to="/">
+            to="/awdaw">
             Games
           </nuxt-link>
           <nuxt-link
             class="header__item"
-            to="/">
+            to="/awdw">
             Shop
           </nuxt-link>
           <nuxt-link
             class="header__item"
-            to="/">
+            to="/awdw">
             Sponsorship
           </nuxt-link>
         </div>
@@ -74,6 +74,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.nuxt-link-active {
+  text-decoration: underline;
+}
 .header {
   &__container {
     max-width: 1200px;
@@ -162,6 +165,12 @@ export default {
   &__burger_active span::after,
   &__burger_active span::before {
     display: none;
+  }
+  .nuxt-link-active {
+    text-decoration: underline;
+  }
+  .nuxt-link-exact-active {
+    text-decoration: underline;
   }
 }
 

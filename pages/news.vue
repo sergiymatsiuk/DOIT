@@ -23,37 +23,7 @@ export default {
   },
   data () {
     return {
-      listGame: ['football', 'soccer', 'tennis'],
-      news: [
-        {
-          game: 'football',
-          img: 'https://cf.geekdo-images.com/DPjV1iI0ygo5Bl3XLNRiIg__opengraph/img/ypxXhmwXXJn7_UlJK537UQt4jcA=/fit-in/1200x630/filters:strip_icc()/pic4449526.jpg',
-          title: 'Brazil end 12-year wait for Copa America',
-          text: 'A night to remember for Brazil. Drama is never too far away at Copa America and this final had it by the bucketlad. Thanks for your company. A night to remember for Brazil. Drama is never too far away at Copa America and this final had it by the bucketlad. Thanks for your company.',
-          id: 1
-        },
-        {
-          game: 'soccer',
-          img: 'https://cf.geekdo-images.com/DPjV1iI0ygo5Bl3XLNRiIg__opengraph/img/ypxXhmwXXJn7_UlJK537UQt4jcA=/fit-in/1200x630/filters:strip_icc()/pic4449526.jpg',
-          title: 'Brazil end 12-year wait for Copa America',
-          text: 'jjbdfjebfjsebefjebfjsbej',
-          id: 2
-        },
-        {
-          game: 'soccer',
-          img: 'https://cf.geekdo-images.com/DPjV1iI0ygo5Bl3XLNRiIg__opengraph/img/ypxXhmwXXJn7_UlJK537UQt4jcA=/fit-in/1200x630/filters:strip_icc()/pic4449526.jpg',
-          title: 'Brazil end 12-year wait for Copa America',
-          text: 'A night to remember for Brazil. Drama is never too far away at Copa America and this final had it by the bucketlad. Thanks for your company. A night to remember for Brazil. Drama is never too far away at Copa America and this final had it by the bucketlad. Thanks for your company.',
-          id: 3
-        },
-        {
-          game: 'tennis',
-          img: 'https://i.kinja-img.com/gawker-media/image/upload/c_scale,f_auto,fl_progressive,pg_1,q_80,w_1600/cfd9c36617e0e2148cbb3f5e6ecba338.jpg',
-          title: 'Brazil end 12-year wait for Copa America',
-          text: 'A night to remember for Brazil. Drama is never too far away at Copa America and this final had it by the bucketlad. Thanks for your company.',
-          id: 4
-        },
-      ],
+      news: [],
       showGame: 'All'
     }
   },
@@ -71,12 +41,30 @@ export default {
           return el.game === this.showGame
         })
       }
+    },
+    nameListGame () {
+      return this.news.map(el=>{
+        return el.game
+      })
+    },
+    listGame () {
+      return this.nameListGame.filter((el, pos) => {
+        return this.nameListGame.indexOf(el) === pos
+      })
     }
+  },
+  async asyncData ({$fire}) {
+    const newsDB = (await $fire.database.ref('news').once('value')).val() || {}
+    const news = Object.keys(newsDB).map(key=>({...newsDB[key], id: key}))
+    return { news }
   }
 }
 </script>
 
 <style lang="scss" scoped>
+  .nuxt-link-active {
+    text-decoration: underline;
+  }
   .news {
     &__box {
       display: flex;
