@@ -77,13 +77,14 @@ export default {
   }
   @media (min-width: 1000px) {
     .aside {
+      height: 80px;
       &__img {
         width: 32px;
         height: 32px;
       }
     }
   }
-  @media (min-width: 1300px) {
+  @media (min-width: 1450px) {
     .aside {
       position: fixed;
       left: 0;

@@ -26,10 +26,11 @@ export default {
     margin: 0 23px;
     margin-bottom: 80px;
   }
-  @media (min-width: 1170px) {
+  @media (min-width: 1220px) {
     .container {
       max-width: 1220px;
       margin: 0 auto;
+      margin-bottom: 90px;
     }
   }
 </style>

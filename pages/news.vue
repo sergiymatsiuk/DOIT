@@ -62,9 +62,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .nuxt-link-active {
-    text-decoration: underline;
-  }
   .news {
     &__box {
       display: flex;
@@ -74,8 +71,7 @@ export default {
       margin-bottom: 30px;
     }
     &__title {
-      font-family: 'Rubik';
-      font-weight: 700;
+      font-family: 'Rubik-Bold';
       font-size: 48px;
       line-height: 56px;
       color: #ffffff;

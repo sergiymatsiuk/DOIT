@@ -1,7 +1,7 @@
 <template>
   <div
     class="input"
-    :class="{ 'input-invalid': fail, 'input-valid': success}">
+    :class="{ 'input-invalid': fail, 'input-valid': success, 'input-all': allW}">
     <label
       class="input__label"
       >{{title}}</label>
@@ -32,8 +32,7 @@
        default: null
      },
      title: {
-       type: String,
-       required: true
+       type: String
      },
      fail: {
        type: Boolean,
@@ -46,6 +45,10 @@
      message: {
        type: String,
        default: ''
+     },
+     allW: {
+       type: Boolean,
+       default: false
      }
    }
  }

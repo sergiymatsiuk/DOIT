@@ -28,7 +28,7 @@
           </nuxt-link>
           <nuxt-link
             class="header__item"
-            to="/awdaw">
+            to="/games">
             Games
           </nuxt-link>
           <nuxt-link
@@ -182,7 +182,7 @@ export default {
       display: none;
     }
     &__container {
-      width: 90%;
+      width: 95%;
       margin: 32px 0;
       justify-content: space-between;
     }
@@ -227,7 +227,7 @@ export default {
 @media (min-width: 1300px) {
   .header {
     &__container {
-      width: 80%;
+      width: 100%;
     }
   }
 }

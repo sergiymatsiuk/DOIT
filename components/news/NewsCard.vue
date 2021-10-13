@@ -42,8 +42,7 @@ export default {
       background: #10171F;
     }
     &__title {
-      font-family: 'Rubik';
-      font-weight: 500;
+      font-family: 'Rubik-Med';
       font-size: 18px;
       line-height: 24px;
       color: #f5f5f5;
