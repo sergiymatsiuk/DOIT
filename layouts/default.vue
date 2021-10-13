@@ -22,13 +22,14 @@ export default {
 
 <style lang="scss" scoped>
   .container {
-    width: 90%;
-    margin: 0 auto;
+    max-width: 1200px;
+    margin: 0 23px;
     margin-bottom: 80px;
   }
   @media (min-width: 1170px) {
     .container {
-      max-width: 1170px;
+      max-width: 1220px;
+      margin: 0 auto;
     }
   }
 </style>
