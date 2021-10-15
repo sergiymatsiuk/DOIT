@@ -49,8 +49,13 @@ export default {
     date (date) {
       this.user.date = date
     },
-    createUser () {
-      console.log(this.user)
+    async createUser () {
+      await this.$fire.auth.createUserWithEmailAndPassword(this.user.email, this.user.password)
+      .then((userCredential) => {
+        const user = userCredential.user.uid
+        this.$fire.database.ref(`users/${user}`).set(this.user)
+        this.$router.push({path: '/'})
+      })
     }
   }
 }

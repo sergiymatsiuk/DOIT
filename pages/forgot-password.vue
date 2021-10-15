@@ -13,11 +13,15 @@
       class="forgot__form">
       <custom-input
         class="forgot__mail"
-        :title="'Username or Email'"/>
-      <div class="forgot__btn">
-        <custom-btn
-        class=""
-        :way="'/'"
+        :value="email"
+        :title="'Username or Email'"
+        :fail="fail"
+        :message="message"
+        @input="changeEmail"/>
+      <div
+        class="forgot__btn"
+        @click.prevent="resetPassword">
+        <custom-btn-without-link
         :title="'Reset password'"
         :bg="'linear-gradient(180deg, #2788F6 0%, #0960E0 100%)'"/>
       </div>
@@ -32,16 +36,50 @@
 
 <script>
 import CustomInput from '@/components/basic/CustomInput'
-import CustomBtn from '@/components/basic/CustomBtn'
+import CustomBtnWithoutLink from '@/components/basic/CustomBtnWithoutLink'
 import BackArrow from '@/components/basic/BackArrow'
+import { required, email } from 'vuelidate/lib/validators'
 
 export default {
   components: {
     CustomInput,
-    CustomBtn,
+    CustomBtnWithoutLink,
     BackArrow
   },
-  layout: 'empty'
+  layout: 'empty',
+  data () {
+    return {
+      email: '',
+      message: '',
+      fail: false
+    }
+  },
+  validations: {
+    email: {
+      required,
+      email
+    }
+  },
+  methods: {
+    resetPassword () {
+      if (!this.$v.email.required) {
+        this.fail = true
+        this.message = 'add email'
+      } else if (!this.$v.email.email) {
+        this.fail = true
+        this.message = 'incorrect email'
+      } else {
+        this.$fire.database.ref(`forgot-password`).push(this.email)
+        this.$router.push({ path: '/forgot-password-sent' })
+      }
+    },
+    changeEmail (input) {
+      this.$v.email.$model = input
+      this.email = input
+      this.fail = false
+      this.message = ''
+    }
+  }
 }
 </script>
 
