@@ -13,8 +13,8 @@
         class="register__nickname"
         :title="'Username'"
         :placeholder="'username'"
-        :fail="$v.username.$dirty && $v.username.$error"
-        :success="$v.username.$dirty && !$v.username.$error"
+        :fail="validUsername.error"
+        :message="validUsername.message"
         v-model.trim="$v.username.$model"
         @input="addUsername"/>
       <custom-select
@@ -65,7 +65,11 @@ export default {
       agree: false,
       username: '',
       date: '',
-      country: null
+      country: null,
+      validUsername: {
+        message: '',
+        error: false
+      }
     }
   },
   validations : {
@@ -76,7 +80,16 @@ export default {
   },
   methods: {
     createUser () {
-      this.$emit('create-user')
+      if (!this.$v.username.required || !this.$v.username.minLength) {
+        this.validUsername.error = true
+        if (!this.$v.username.required) {
+          this.validUsername.message = 'add username'
+        } else {
+          this.validUsername.message = 'username must have at least 4 letters'
+        }
+      } else {
+        this.$emit('create-user')
+      }
     },
     selectCountry (country) {
       this.country = country
@@ -84,6 +97,10 @@ export default {
     },
     addUsername (name) {
       this.username = name
+      this.validUsername = {
+        message: '',
+        error: false
+      }
       this.$emit('add-username', name)
     },
     addDate (date) {
@@ -107,7 +124,7 @@ export default {
       return this.date ? true : false
     },
     allInput () {
-      return this.isCountry && this.isDate && this.$v.username.$dirty && !this.$v.username.$error && this.agree 
+      return this.isCountry && this.isDate && this.agree 
         ? false
         : true
     }

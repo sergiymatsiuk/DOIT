@@ -12,8 +12,8 @@
       <custom-input
         class="register__mail"
         :title="'Email'"
-        :fail="$v.email.$dirty && $v.email.$error"
-        :success="$v.email.$dirty && !$v.email.$error"
+        :fail="validEmail.error"
+        :message="validEmail.message"
         v-model.trim="$v.email.$model"
         @input="changeEmail"/>
       <custom-input
@@ -21,8 +21,8 @@
         :type="'password'"
         :placeholder="'password'"
         :title="'Password'"
-        :fail="$v.password.$dirty && $v.password.$error"
-        :success="$v.password.$dirty && !$v.password.$error"
+        :fail="validPassword.error"
+        :message="validPassword.message"
         v-model.trim="$v.password.$model"
         @input="changePassword"/>
       <button
@@ -76,7 +76,15 @@ export default {
   data () {
     return {
       email: '',
-      password: ''
+      password: '',
+      validEmail: {
+        message: '',
+        error: false
+      },
+      validPassword: {
+        message: '',
+        error: false
+      }
     }
   },
   validations: {
@@ -91,19 +99,42 @@ export default {
   },
   layout: 'empty',
   methods: {
+    clearError () {
+      this.validEmail.message = '',
+      this.validEmail.error = false,
+      this.validPassword.message = '',
+      this.validPassword.error = false
+    },
     changeEmail (email) {
       this.email = email
+      this.clearError()
     },
     changePassword (password) {
       this.password = password
+      this.clearError()
     },
     nextStep () {
-      if (!this.email || this.$v.email.$error || !this.password || this.$v.password.$error) {
-        alert("Add EMAIL or PASSWORD")
+      if (!this.$v.email.required || !this.$v.email.email || !this.$v.password.required || !this.$v.password.minLength) {
+        if (!this.$v.email.required) {
+          this.validEmail.error = true
+          this.validEmail.message = 'add mail'
+        }
+        if (!this.$v.email.email) {
+          this.validEmail.error = true
+          this.validEmail.message = 'incorrect email'
+        }
+        if (!this.$v.password.required) {
+          this.validPassword.error = true
+          this.validPassword.message = 'add password'
+        }
+        if (!this.$v.password.minLength) {
+          this.validPassword.error = true
+          this.validPassword.message = 'password must have at least 6 letters'
+        }
       } else {
         this.$emit('next-step', this.email, this.password)
       }
-    }
+    },
   }
 }
 </script>
