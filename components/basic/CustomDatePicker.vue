@@ -4,6 +4,7 @@
       <p class="title">{{title}}</p>
       <v-date-picker
         is-dark
+        class="date-picker"
         color="dark"
         show-caps
         locale="en"
@@ -120,5 +121,12 @@ export default {
   .datepicker__input {
     border: 1px solid #4CB725;
   }
+}
+.date-picker .vc-container .vc-is-dark {
+  background-color: $empty-bg;
+  border: 1px solid #16263D;
+}
+.date-picker .vc-container {
+  border: 0;
 }
 </style>

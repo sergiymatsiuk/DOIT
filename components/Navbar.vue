@@ -18,7 +18,7 @@
         <div class="header__list">
           <nuxt-link
             class="header__item"
-            to="/adw">
+            to="/play">
             Play
           </nuxt-link>
           <nuxt-link
