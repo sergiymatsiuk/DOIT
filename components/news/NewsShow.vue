@@ -1,10 +1,10 @@
 <template>
-  <div class="show-news-box">
+  <transition-group name="news-list" tag="div" class="news-list">
     <news-card
-      v-for="(item, idx) in news"
-      :key="idx"
+      v-for="item in news"
+      :key="item.id"
       :item="item"/>
-  </div>
+  </transition-group>
 </template>
 
 <script>
@@ -25,16 +25,23 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .show-news-box {
+  .news-list {
     display: flex;
     flex-direction: column;
     gap: 16px;
   }
   @media (min-width: 1124px) {
-    .show-news-box {
+    .news-list {
       flex-direction: row;
       flex-wrap: wrap;
       gap: 19px;
     }
+  }
+  .news-list-enter-active {
+    transition: opacity 5s;
+  }
+
+  .news-list-enter, .news-list-leave-active {
+    opacity: 0;
   }
 </style>
