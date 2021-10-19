@@ -38,7 +38,7 @@ export default {
     }
   }
   .news-list-enter-active {
-    transition: opacity 5s;
+    transition: opacity 3s;
   }
 
   .news-list-enter, .news-list-leave-active {

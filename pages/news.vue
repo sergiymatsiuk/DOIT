@@ -8,6 +8,8 @@
     </div>
     <news-show
       :news="showNews"/>
+    <lazy-loading
+      @get="getNews"/>
   </div>
 </template>
 
@@ -36,7 +38,15 @@ export default {
       this.showGame = game
     },
     getNews() {
-      this.newsInPage += this.addNewsInPage
+      setTimeout(()=>{this.newsInPage += this.addNewsInPage}, 500)
+    },
+    test () {
+      this.$fire.database.ref('news').push({
+        game: "CS:GO",
+        img: "https://firebasestorage.googleapis.com/v0/b/doit-abd08.appspot.com/o/test%2FRectangle%202%20(1).png?alt=media&token=e5e6a973-abf2-428d-b15b-d058f0e6a62e",
+        text: "A night to remember for Brazil. Drama is never too far away at Copa America and this final had it by the bucketlad. Thanks for your company. A night to remember for Brazil. Drama is never too far away at Copa America and this final had it by the bucketlad. Thanks for your company.",
+        title: "Brazil end 12-year wait for Copa America"
+      })
     }
   },
   computed: {
