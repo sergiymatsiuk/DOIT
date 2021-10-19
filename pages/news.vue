@@ -1,7 +1,7 @@
 <template>
   <div class="news">
     <div class="news__box">
-      <h2 class="news__title">News</h2>
+      <h2 class="news__title" @click.prevent="test">News</h2>
       <select-game
         :games="listGame"
         @change-show-game="changeGame"/>
@@ -14,30 +14,40 @@
 <script>
 import SelectGame from '@/components/basic/SelectGame'
 import NewsShow from '@/components/news/NewsShow'
+import LazyLoading from '@/components/basic/LazyLoading'
 
 export default {
   name: 'news',
   components: {
     SelectGame,
-    NewsShow
+    NewsShow,
+    LazyLoading
   },
   data () {
     return {
       news: [],
-      showGame: 'All'
+      showGame: 'All',
+      newsInPage: 6,
+      addNewsInPage: 6
     }
   },
   methods: {
     changeGame(game) {
       this.showGame = game
+    },
+    getNews() {
+      this.newsInPage += this.addNewsInPage
     }
   },
   computed: {
+    pageNews () {
+      return this.news.slice(0, this.newsInPage)
+    },
     showNews () {
       if (this.showGame === 'All') {
-        return this.news
+        return this.pageNews
       } else {
-        return this.news.filter(el=>{
+        return this.pageNews.filter(el=>{
           return el.game === this.showGame
         })
       }

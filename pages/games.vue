@@ -2,7 +2,8 @@
   <div class="games">
     <div class="games__box">
       <h2
-        class="games__title">Games</h2>
+        class="games__title"
+        @click.prevent="addGame">Games</h2>
       <custom-input
         class="games__search"
         :placeholder="'Search the game'"
@@ -12,33 +13,44 @@
     </div>
     <show-games
       :games='gamesList'/>
+    <lazy-loading
+      @get="getGames"/>
   </div>
 </template>
 
 <script>
 import CustomInput from '@/components/basic/CustomInput'
 import ShowGames from '@/components/games/ShowGames.vue'
+import LazyLoading from '@/components/basic/LazyLoading'
 
 export default {
   name: 'games',
   components: {
     CustomInput,
-    ShowGames
+    ShowGames,
+    LazyLoading
   },
   data () {
     return {
       search: '',
-      games: []
+      games: [],
+      gamesInPage: 6,
+      addGames: 6
     }
   },
   methods: {
     changeSearch (target) {
       this.search = target
+    },
+    getGames () {
+      setTimeout(()=>{this.gamesInPage += this.addGames}, 500)
     }
   },
   computed: {
     gamesList () {
-      return this.games.filter(el => {
+      return this.games
+        .slice(0, this.gamesInPage)
+        .filter(el => {
         return el.name.toLowerCase().includes(this.search.toLowerCase())
       })
     }
