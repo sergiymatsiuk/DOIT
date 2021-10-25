@@ -50,6 +50,7 @@ export default {
       this.user.date = date
     },
     async createUser () {
+      console.log(this.user)
       await this.$fire.auth.createUserWithEmailAndPassword(this.user.email, this.user.password)
       .then((userCredential) => {
         const user = userCredential.user.uid

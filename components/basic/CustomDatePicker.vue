@@ -10,7 +10,7 @@
         locale="en"
         v-bind="$attrs"
         :first-day-of-week="1"
-        :masks="{ title: 'YYYY MMMM', input: 'DD-MM-YYYY' }"
+        :masks="{ title: 'YYYY MMMM', input: 'D MMMM YYYY' }"
         v-on="$listeners"
         v-model="date"
       >
@@ -48,12 +48,13 @@ export default {
   },
   data () {
     return {
-      date: null
+      date: new Date()
     }
   },
   watch: {
     date () {
-      this.$emit('change-date', this.date)
+      console.log(this.date.toString())
+      this.$emit('change-date', this.date.toString())
     }
   }
 }
